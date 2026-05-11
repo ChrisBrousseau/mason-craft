@@ -1,84 +1,95 @@
 export const MM_QUESTIONS = [
   {
     q: 'How is a brother raised to the sublime degree of a Master Mason?',
-    a: 'By first proving his proficiency in open lodge and then receiving the test of merit that leads to the Third Degree.',
+    a: 'By undergoing a previous examination in open lodge and by being entrusted with a test of merit leading to that degree.',
   },
   {
-    q: 'Where is he then conducted?',
-    a: "To a convenient room adjoining a Master Mason's Lodge so he may be prepared.",
+    q: 'Where were you then conducted?',
+    a: "To a convenient room adjoining a Master Mason's Lodge for the purpose of being prepared.",
   },
   {
-    q: 'How is he prepared for the Third Degree?',
-    a: 'With both ankles, both breasts and both knees made bare, and with both heels slipshod.',
+    q: 'How were you prepared?',
+    a: 'By having both ankles, both breasts and both knees made bare, and both heels slipshod.',
   },
   {
     q: 'What enables him to claim admission?',
-    a: 'The help of God, the united aid of the square and compasses, and the benefit of a pass grip and pass word.',
+    a: 'The help of God, the united aid of the square and compasses, and the benefit of a pass grip and a pass word.',
   },
   {
     q: 'What is the pass word?',
-    a: 'T•••• C••••.',
+    a: 'Tubal Cain.',
   },
   {
     q: 'What is the meaning of that word?',
-    a: 'W•••••• P••••••••••.',
+    a: 'Worldly Possessions.',
   },
   {
-    q: 'How is admission gained?',
+    q: 'How did you gain admission?',
     a: 'By the knocks of a Fellow Craft.',
   },
   {
-    q: 'On what is he admitted?',
-    a: 'On both points of the compasses presented to both breasts.',
+    q: 'On what were you admitted?',
+    a: 'Both points of the compasses presented to both breasts.',
   },
   {
-    q: 'What appears different on entering the lodge?',
-    a: 'All is in darkness except for a great light in the East.',
+    q: 'On your admission into the lodge, did you observe anything different from its usual appearance?',
+    a: 'I did, all was in darkness, save a great light in the East.',
   },
   {
-    q: 'What does that darkness represent?',
+    q: 'To what does that darkness allude?',
     a: 'The darkness of death.',
   },
   {
-    q: 'What is the peculiar subject of this degree?',
-    a: 'Death.',
+    q: 'Am I to understand that death is the peculiar subject of this degree?',
+    a: 'It is indeed.',
   },
   {
-    q: 'Why is death central to this degree?',
-    a: 'Because of the untimely death of our Grand Master Hiram Abif.',
+    q: 'From what circumstance?',
+    a: 'From the untimely death of our Grand Master Hiram Abif.',
   },
   {
-    q: 'With what working tools was our Master slain?',
-    a: 'The plumb rule, the level, and the heavy setting maul.',
+    q: 'What were the working tools with which our Master was slain?',
+    a: 'The plumb rule, level, and heavy setting maul.',
   },
   {
-    q: 'How does the candidate become acquainted with that death?',
-    a: 'By figuratively representing our Master Hiram Abif during his raising.',
+    q: 'How came you acquainted with his death?',
+    a: 'By having figuratively represented our Master, Hiram Abif, when I was raised to the sublime degree of a Master Mason.',
   },
   {
-    q: 'On what is he raised?',
+    q: 'On what were you raised?',
     a: 'On the five points of fellowship.',
   },
   {
     q: "What symbol marks the resting place of the dead in a Master Mason's Lodge?",
-    a: 'A sprig of acacia.',
+    a: 'A sprig of Acacia.',
   },
   {
-    q: 'What are the working tools of a Master Mason?',
+    q: 'What are the Working Tools of a Master Mason?',
     a: 'The skirret, the pencil, and the compasses.',
   },
   {
-    q: 'What do those working tools teach?',
-    a: 'The skirret teaches a straight course of conduct, the pencil reminds us our conduct is observed and recorded, and the compasses point to divine justice.',
+    q: 'What do the working tools symbolize?',
+    a: 'The skirret points out that straight and undeviating line of conduct laid down for our pursuit in the Volume of the Sacred Law, the pencil teaches us that our words and actions are observed and recorded by the Most High, and the compasses remind us of His unerring and impartial justice.',
   },
   {
-    q: 'What is entrusted to the care of a Master Mason?',
+    q: 'What, as a Master Mason, are now entrusted to your care?',
     a: 'The landmarks of the Order.',
   },
   {
-    q: 'What are those landmarks?',
-    a: 'The rites, established usages, and customs of the Order.',
+    q: 'What are they?',
+    a: 'The Rites, and established usages and customs of our Order.',
   },
+];
+
+export const MM_TERMS_QA = [
+  { q: 'What does MM stand for?', a: 'Master Mason' },
+  { q: 'What does FC stand for in the Third Degree sequence?', a: 'Fellow Craft' },
+  { q: 'What does T•••• C•••• stand for?', a: 'Tubal Cain' },
+  { q: 'What does Tubal Cain mean in this question set?', a: 'Worldly Possessions' },
+  { q: 'What does W•••••• P•••••••••• stand for?', a: 'Worldly Possessions' },
+  { q: 'What does VSL stand for?', a: 'Volume of the Sacred Law' },
+  { q: 'What are the five points named in the raising answer?', a: 'Five points of fellowship' },
+  { q: 'What symbol marks the resting place of the dead?', a: 'A sprig of Acacia' },
 ];
 
 export const MM_FILL_BLANK = [
@@ -105,17 +116,17 @@ export const MM_FILL_BLANK = [
   },
   {
     before: 'The pass word is',
-    blank: 'T•••• C••••',
+    blank: 'Tubal Cain',
     after: '.',
-    options: ['T•••• C••••', 'W•••••• P••••••••••', 'H•••• A•••', 'F••• P•••••'],
-    explanation: 'The study app keeps this word masked, but you can still practice recognising and recalling it accurately.',
+    options: ['Tubal Cain', 'Worldly Possessions', 'Hiram Abif', 'Five points'],
+    explanation: 'The public Third Degree question set gives the pass word as Tubal Cain.',
   },
   {
     before: 'The meaning of that word is',
-    blank: 'W•••••• P••••••••••',
+    blank: 'Worldly Possessions',
     after: '.',
-    options: ['W•••••• P••••••••••', 'H•••• G•••••', 'D•••••• O• D•••', 'S•••• C•••••'],
-    explanation: 'The gloss is also masked here so you can drill the prompt without expanding it publicly in the UI.',
+    options: ['Worldly Possessions', 'Hidden Mysteries', 'Divine Order', 'Sacred Conduct'],
+    explanation: 'The import of Tubal Cain in this public question set is Worldly Possessions.',
   },
   {
     before: 'Admission is gained by the knocks of a',

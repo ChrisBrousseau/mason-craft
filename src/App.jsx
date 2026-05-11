@@ -9,6 +9,7 @@ import TopBar             from './components/TopBar.jsx';
 import ProgBar            from './components/ProgBar.jsx';
 import FlashcardLesson    from './components/FlashcardLesson.jsx';
 import QuizLesson         from './components/QuizLesson.jsx';
+import OrderedQALesson    from './components/OrderedQALesson.jsx';
 import RecitationLesson   from './components/RecitationLesson.jsx';
 import RitualLesson       from './components/RitualLesson.jsx';
 import OfficersLesson     from './components/OfficersLesson.jsx';
@@ -240,6 +241,7 @@ export default function App() {
       <LessonHeader module={module} accent={accent} />
       <div className="lesson-body">
         {module?.type === 'flash'     && <FlashcardLesson    cards={module.data}         onComplete={handleComplete} addXP={addXP} />}
+        {module?.type === 'orderedqa' && <OrderedQALesson    items={module.data}         onComplete={handleComplete} title={module.title} />}
         {module?.type === 'quiz'      && <QuizLesson         questions={module.quizData} onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} label={module.label} questionCount={module.questionCount} />}
         {module?.type === 'recitation'&& <RecitationLesson   items={module.data}         onComplete={handleComplete} addXP={addXP} />}
         {module?.type === 'officers'  && <OfficersLesson                                 onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} />}

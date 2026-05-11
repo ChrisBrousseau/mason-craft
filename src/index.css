@@ -378,6 +378,19 @@ body {
 .ritual-title  { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; margin-bottom: 4px; font-size: 17px; font-weight: 700; }
 .ritual-quiz-title { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; margin-bottom: 4px; font-size: 16px; font-weight: 700; }
 .ritual-prev-line  { font-size: 15px; line-height: 1.65; color: var(--text-muted); }
+.ordered-qa-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.ordered-qa-card { padding-top: 16px; }
+.ordered-qa-question { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 14px; }
+.ordered-qa-answer-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.ordered-qa-answer { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
 
 .section-tag {
   background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2);
