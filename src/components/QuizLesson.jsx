@@ -1,8 +1,11 @@
 import { useState, useMemo } from 'react';
 import ProgBar from './ProgBar.jsx';
 
-export default function QuizLesson({ questions, onComplete, addXP, loseHeart, label }) {
-  const qs = useMemo(() => [...questions].sort(() => Math.random() - 0.5).slice(0, 12), []);
+export default function QuizLesson({ questions, onComplete, addXP, loseHeart, label, questionCount = 12 }) {
+  const qs = useMemo(() => {
+    const shuffled = [...questions].sort(() => Math.random() - 0.5);
+    return questionCount ? shuffled.slice(0, questionCount) : shuffled;
+  }, [questions, questionCount]);
   const [idx,      setIdx]      = useState(0);
   const [selected, setSelected] = useState(null);
   const [answered, setAnswered] = useState(false);

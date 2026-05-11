@@ -9,6 +9,7 @@ import {
   FC_FACTS_QA, FILL_BLANK_FC, FC_OBLIGATION_CARDS, FC_TOOLS_QUIZ,
   EA_TOOLS_QUIZ,
 } from './fc-data.js';
+import { MM_QUESTIONS } from './mm-data.js';
 
 export const EA_MODULES = [
   { id:'ea-vocab',     icon:'📚', degree:'ea', title:'EA Vocabulary',          sub:'15 key terms of the First Degree',                 type:'flash',    xp:50,  data:EA_GLOSSARY },
@@ -31,4 +32,10 @@ export const FC_MODULES = [
   { id:'fc-fillblank', icon:'✏️', degree:'fc', title:'Fill the Blanks — FC',          sub:'Decode every abbreviation of the Second Degree',      type:'fillblank',xp:70,  data:FILL_BLANK_FC },
 ];
 
-export const ALL_MODULES = [...EA_MODULES, ...FC_MODULES];
+export const MM_MODULES = [
+  { id:'mm-questions', icon:'🎓', degree:'mm', title:'MM Questions', sub:'Study the Third Degree questions and answers as flashcards', type:'flash', xp:90, data:MM_QUESTIONS },
+  { id:'mm-quiz', icon:'🧠', degree:'mm', title:'MM Knowledge Quiz', sub:'Multiple-choice recall across all Third Degree prompts', type:'quiz', xp:100, quizData:buildQuiz(MM_QUESTIONS), label:'Master Mason Questions', questionCount:MM_QUESTIONS.length },
+  { id:'mm-recitation', icon:'🗣️', degree:'mm', title:'MM Verbal Test', sub:'No hints: answer from memory, then reveal and self-grade', type:'recitation', xp:120, data:MM_QUESTIONS },
+];
+
+export const ALL_MODULES = [...EA_MODULES, ...FC_MODULES, ...MM_MODULES];

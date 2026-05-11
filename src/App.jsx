@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { ls_get, ls_set } from './utils.js';
-import { EA_MODULES, FC_MODULES, ALL_MODULES } from './data/modules.js';
+import { EA_MODULES, FC_MODULES, MM_MODULES, ALL_MODULES } from './data/modules.js';
 
 import MasonicEmblem      from './components/MasonicEmblem.jsx';
 import AllSeeingEye       from './components/AllSeeingEye.jsx';
@@ -9,36 +9,24 @@ import TopBar             from './components/TopBar.jsx';
 import ProgBar            from './components/ProgBar.jsx';
 import FlashcardLesson    from './components/FlashcardLesson.jsx';
 import QuizLesson         from './components/QuizLesson.jsx';
+import RecitationLesson   from './components/RecitationLesson.jsx';
 import RitualLesson       from './components/RitualLesson.jsx';
 import OfficersLesson     from './components/OfficersLesson.jsx';
 import WorkingToolsLesson from './components/WorkingToolsLesson.jsx';
 import FillBlankLesson    from './components/FillBlankLesson.jsx';
 import ResultScreen       from './components/ResultScreen.jsx';
 
-/* ── Tessellated floor row — decorative divider ─────────────────── */
-function TessRow({ count = 20, accent = '#c9a84c' }) {
-  const dark  = 'rgba(0,0,0,0.55)';
-  const light = `${accent}22`;
-  return (
-    <div className="degree-tess-row">
-      {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="degree-tess-sq" style={{ background: i % 2 === 0 ? dark : light }} />
-      ))}
-    </div>
-  );
-}
-
 /* ── Degree divider ─────────────────────────────────────────────── */
 function DegreeDivider({ label, color, progress }) {
   return (
     <div className="degree-divider">
-      <TessRow count={24} accent={color} />
+      <div className="degree-rule" style={{ color }} />
       <div className="degree-divider-inner">
         <span className="degree-diamond" style={{ color }}>◆</span>
         <span className="degree-divider-label" style={{ color }}>{label}</span>
         <span className="degree-diamond" style={{ color }}>◆</span>
       </div>
-      <TessRow count={24} accent={color} />
+      <div className="degree-rule" style={{ color }} />
       <div className="degree-progress-text">{progress}</div>
     </div>
   );
@@ -73,9 +61,7 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
   const pct    = Math.round((completed.length / ALL_MODULES.length) * 100);
   const eaDone = EA_MODULES.filter(m => completed.includes(m.id)).length;
   const fcDone = FC_MODULES.filter(m => completed.includes(m.id)).length;
-
-  /* Tessellated row in the hero */
-  const heroTess = Array.from({ length: 28 });
+  const mmDone = MM_MODULES.filter(m => completed.includes(m.id)).length;
 
   return (
     <div className="page home-page">
@@ -84,24 +70,19 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
 
         {/* All-Seeing Eye */}
         <div className="home-eye-wrap">
-          <AllSeeingEye size={56} color="#c9a84c" />
+          <AllSeeingEye size={60} color="#c9a84c" />
         </div>
 
         {/* Square & Compass */}
         <div className="home-emblem-wrap">
-          <MasonicEmblem size={80} color="#c9a84c" />
+          <MasonicEmblem size={88} color="#c9a84c" />
         </div>
 
         <h1 className="home-title">Mason Craft</h1>
-        <p className="home-subtitle">Freemasons Victoria · EA &amp; FC Degrees</p>
+        <p className="home-subtitle">Freemasons Victoria · EA, FC &amp; MM Study</p>
 
-        {/* Tessellated strip */}
-        <div className="tess-row" style={{ marginTop: 20 }}>
-          {heroTess.map((_, i) => (
-            <div key={i} className="tess-square"
-              style={{ background: i % 2 === 0 ? '#0d0804' : 'rgba(201,168,76,0.18)' }} />
-          ))}
-        </div>
+        {/* Gold rule */}
+        <div className="gold-rule" />
 
         <div className="home-stats">
           <div className="hstat">
@@ -158,13 +139,25 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
           ))}
         </div>
 
+        <DegreeDivider
+          label="Third Degree · Master Mason"
+          color="#6a86c8"
+          progress={`${mmDone} of ${MM_MODULES.length} complete`}
+        />
+        <div className="module-grid">
+          {MM_MODULES.map(mod => (
+            <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
+              onClick={() => onOpen(mod)} accentColor="#6a86c8" />
+          ))}
+        </div>
+
         <div className="note-box">
           <div className="note-box-title">📌 About this app</div>
           <div className="note-box-body">
             All coded words from both degrees are fully revealed — BOAZ (EA), JACHIN (FC),
             SHIBBOLETH (pass word), signs, grips, penal signs, and all preparation details.
             Content drawn from the official FMV document (Information on Lodge Workings, June 2017).
-            EA and FC only — no Third Degree content is included.
+            The Third Degree section is limited to public study questions and answers, rather than full ritual content.
           </div>
         </div>
       </div>
@@ -176,7 +169,9 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
 function LessonHeader({ module, accent }) {
   const degreeLabel = module.degree === 'ea'
     ? 'First Degree · Entered Apprentice'
-    : 'Second Degree · Fellow Craft';
+    : module.degree === 'fc'
+      ? 'Second Degree · Fellow Craft'
+      : 'Third Degree · Master Mason';
   return (
     <div className="lesson-header">
       <div className="lesson-icon">{module.icon}</div>
@@ -222,8 +217,11 @@ export default function App() {
     return <HomeScreen xp={xp} streak={streak} completed={completed} onOpen={openModule} />;
   }
 
-  const isEA   = module?.degree === 'ea';
-  const accent = isEA ? '#c87533' : '#c9a84c';   /* copper for EA, gold for FC */
+  const accent = module?.degree === 'ea'
+    ? '#c87533'
+    : module?.degree === 'fc'
+      ? '#c9a84c'
+      : '#6a86c8';
 
   if (screen === 'result' && result) {
     return (
@@ -242,7 +240,8 @@ export default function App() {
       <LessonHeader module={module} accent={accent} />
       <div className="lesson-body">
         {module?.type === 'flash'     && <FlashcardLesson    cards={module.data}         onComplete={handleComplete} addXP={addXP} />}
-        {module?.type === 'quiz'      && <QuizLesson         questions={module.quizData} onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} label={module.label} />}
+        {module?.type === 'quiz'      && <QuizLesson         questions={module.quizData} onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} label={module.label} questionCount={module.questionCount} />}
+        {module?.type === 'recitation'&& <RecitationLesson   items={module.data}         onComplete={handleComplete} addXP={addXP} />}
         {module?.type === 'officers'  && <OfficersLesson                                 onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} />}
         {module?.type === 'ritual'    && <RitualLesson       sections={module.sections}  onComplete={handleComplete} title={module.title} />}
         {module?.type === 'fillblank' && <FillBlankLesson    items={module.data}          onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} />}

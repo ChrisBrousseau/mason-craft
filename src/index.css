@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════
    MASON CRAFT — Lodge Room Theme
    Palette: mahogany · gold · crimson · parchment
-   Motifs:  tessellated floor · dark wood · Masonic brass
+   Motifs:  dark wood panelling · Masonic brass
    ══════════════════════════════════════════════════════════════════ */
 
 /* ── Reset ──────────────────────────────────────────────────────── */
@@ -34,23 +34,14 @@
   --radius-lg:   20px;
 }
 
-/* ── Body — tessellated floor texture ───────────────────────────── */
+/* ── Body ────────────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
-  /* Tessellated checkerboard background — dark mahogany on near-black */
   background-color: var(--bg);
-  background-image:
-    linear-gradient(45deg, #17100a 25%, transparent 25%),
-    linear-gradient(-45deg, #17100a 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #17100a 75%),
-    linear-gradient(-45deg, transparent 75%, #17100a 75%);
-  background-size: 32px 32px;
-  background-position: 0 0, 0 16px, 16px -16px, -16px 0;
-  background-attachment: fixed;
 }
 ::-webkit-scrollbar       { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-mid); }
@@ -113,22 +104,15 @@ body {
 .prog-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); transition: width .5s cubic-bezier(.4,0,.2,1); }
 
 /* ─────────────────────────────────────────────────────────────────
-   HOME HERO — tessellated gold floor
+   HOME HERO
    ───────────────────────────────────────────────────────────────── */
 .home-hero {
   padding: 44px 24px 36px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  /* Gold-tinted tessellated floor — more visible than the body pattern */
-  background-color: #110a04;
-  background-image:
-    linear-gradient(45deg, rgba(201,168,76,.07) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(201,168,76,.07) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(201,168,76,.07) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(201,168,76,.07) 75%);
-  background-size: 40px 40px;
-  background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+  /* Dark mahogany panel with subtle vignette */
+  background: radial-gradient(ellipse at 50% 0%, #1e1006 0%, #0d0804 70%);
   /* Bottom border like the lodge altar step */
   border-bottom: 2px solid var(--border);
   box-shadow: 0 4px 32px rgba(0,0,0,.7), inset 0 -1px 0 var(--gold-dim);
@@ -171,16 +155,12 @@ body {
   text-transform: uppercase; margin-bottom: 0;
 }
 
-/* Tessellated divider row below subtitle */
-.tess-row {
-  display: flex; justify-content: center; gap: 0;
-  margin: 18px auto 0;
-  width: fit-content;
-  border: 1px solid var(--border-dim);
-  overflow: hidden; border-radius: 3px;
-}
-.tess-square {
-  width: 14px; height: 14px;
+/* Gold divider line below subtitle */
+.gold-rule {
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto 0;
+  opacity: .55;
 }
 
 .home-stats {
@@ -227,11 +207,12 @@ body {
   font-size: 11px; font-weight: 700;
   letter-spacing: 3px; text-transform: uppercase; white-space: nowrap;
 }
-/* Tessellated row as the divider line */
-.degree-tess-row {
-  display: flex; width: 100%; overflow: hidden; border-radius: 2px; opacity: .45;
+/* Thin gold line as degree divider */
+.degree-rule {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor 20%, currentColor 80%, transparent);
+  opacity: .35;
 }
-.degree-tess-sq { flex: 1; height: 6px; }
 .degree-progress-text { font-size: 11px; color: var(--text-dim); letter-spacing: .5px; }
 
 /* ── Module grid ────────────────────────────────────────────────── */
@@ -340,6 +321,10 @@ body {
   border-color: var(--gold);
   animation: glow 2s ease-in-out infinite;
   background: linear-gradient(180deg, #201408 0%, var(--bg-card) 100%);
+}
+.recitation-answer-box {
+  min-height: 0;
+  margin-top: 0;
 }
 .fc-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 700; }
 .fc-text  { font-size: 17px; line-height: 1.7; color: var(--text); }
