@@ -214,6 +214,38 @@ body {
   opacity: .35;
 }
 .degree-progress-text { font-size: 11px; color: var(--text-dim); letter-spacing: .5px; }
+.degree-section { margin-top: 40px; }
+.degree-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.degree-toggle:hover .degree-divider-label,
+.degree-toggle:focus-visible .degree-divider-label { color: var(--text); }
+.degree-toggle:focus-visible {
+  outline: 1px solid rgba(201,168,76,.35);
+  outline-offset: 8px;
+  border-radius: var(--radius-sm);
+}
+.degree-chevron {
+  color: var(--text-dim);
+  font-size: 20px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform .2s ease, color .2s ease;
+}
+.degree-chevron.expanded {
+  transform: rotate(180deg);
+  color: var(--gold);
+}
+.degree-section-body { margin-top: 20px; }
 
 /* ── Module grid ────────────────────────────────────────────────── */
 .module-grid {

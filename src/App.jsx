@@ -33,6 +33,25 @@ function DegreeDivider({ label, color, progress }) {
   );
 }
 
+function DegreeSection({ label, color, progress, children, defaultExpanded = false }) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+
+  return (
+    <section className="degree-section">
+      <button
+        type="button"
+        className="degree-toggle"
+        onClick={() => setExpanded(value => !value)}
+        aria-expanded={expanded}
+      >
+        <DegreeDivider label={label} color={color} progress={progress} />
+        <span className={`degree-chevron ${expanded ? 'expanded' : ''}`} aria-hidden="true">⌄</span>
+      </button>
+      {expanded && <div className="degree-section-body">{children}</div>}
+    </section>
+  );
+}
+
 /* ── Module card ────────────────────────────────────────────────── */
 function ModuleCard({ mod, done, onClick, accentColor }) {
   return (
@@ -115,42 +134,45 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
       <div className="home-content">
 
         {/* EA — copper accent */}
-        <DegreeDivider
+        <DegreeSection
           label="First Degree · Entered Apprentice"
           color="#c87533"
           progress={`${eaDone} of ${EA_MODULES.length} complete`}
-        />
-        <div className="module-grid">
-          {EA_MODULES.map(mod => (
-            <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
-              onClick={() => onOpen(mod)} accentColor="#c87533" />
-          ))}
-        </div>
+        >
+          <div className="module-grid">
+            {EA_MODULES.map(mod => (
+              <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
+                onClick={() => onOpen(mod)} accentColor="#c87533" />
+            ))}
+          </div>
+        </DegreeSection>
 
         {/* FC — gold accent */}
-        <DegreeDivider
+        <DegreeSection
           label="Second Degree · Fellow Craft"
           color="#c9a84c"
           progress={`${fcDone} of ${FC_MODULES.length} complete`}
-        />
-        <div className="module-grid">
-          {FC_MODULES.map(mod => (
-            <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
-              onClick={() => onOpen(mod)} accentColor="#c9a84c" />
-          ))}
-        </div>
+        >
+          <div className="module-grid">
+            {FC_MODULES.map(mod => (
+              <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
+                onClick={() => onOpen(mod)} accentColor="#c9a84c" />
+            ))}
+          </div>
+        </DegreeSection>
 
-        <DegreeDivider
+        <DegreeSection
           label="Third Degree · Master Mason"
           color="#6a86c8"
           progress={`${mmDone} of ${MM_MODULES.length} complete`}
-        />
-        <div className="module-grid">
-          {MM_MODULES.map(mod => (
-            <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
-              onClick={() => onOpen(mod)} accentColor="#6a86c8" />
-          ))}
-        </div>
+        >
+          <div className="module-grid">
+            {MM_MODULES.map(mod => (
+              <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
+                onClick={() => onOpen(mod)} accentColor="#6a86c8" />
+            ))}
+          </div>
+        </DegreeSection>
 
         <div className="note-box">
           <div className="note-box-title">📌 About this app</div>

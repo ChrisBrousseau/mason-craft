@@ -1,6 +1,6 @@
 export const MM_QUESTIONS = [
   {
-    q: 'How is a brother raised to the sublime degree of a Master Mason?',
+    q: 'How got you raised to the sublime degree of a Master Mason?',
     a: 'By undergoing a previous examination in open lodge and by being entrusted with a test of merit leading to that degree.',
   },
   {
@@ -12,15 +12,15 @@ export const MM_QUESTIONS = [
     a: 'By having both ankles, both breasts and both knees made bare, and both heels slipshod.',
   },
   {
-    q: 'What enables him to claim admission?',
+    q: 'What enabled you to claim admission?',
     a: 'The help of God, the united aid of the square and compasses, and the benefit of a pass grip and a pass word.',
   },
   {
-    q: 'What is the pass word?',
+    q: 'Give me that pass word.',
     a: 'Tubal Cain.',
   },
   {
-    q: 'What is the meaning of that word?',
+    q: 'The import of the word?',
     a: 'Worldly Possessions.',
   },
   {
@@ -60,7 +60,7 @@ export const MM_QUESTIONS = [
     a: 'On the five points of fellowship.',
   },
   {
-    q: "What symbol marks the resting place of the dead in a Master Mason's Lodge?",
+    q: "What symbol marks the resting place of the dead in a Master Mason's lodge?",
     a: 'A sprig of Acacia.',
   },
   {
@@ -73,7 +73,7 @@ export const MM_QUESTIONS = [
   },
   {
     q: 'What, as a Master Mason, are now entrusted to your care?',
-    a: 'The landmarks of the Order.',
+    a: 'The Landmarks of the Order.',
   },
   {
     q: 'What are they?',
