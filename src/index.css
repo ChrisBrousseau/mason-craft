@@ -373,6 +373,14 @@ body {
   padding: 12px 14px;
   margin-bottom: 14px;
 }
+.audio-phase-label {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
 
 .btn-pair { display: flex; gap: 12px; }
 .btn-still-learning {

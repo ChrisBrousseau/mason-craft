@@ -10,6 +10,7 @@ import ProgBar            from './components/ProgBar.jsx';
 import FlashcardLesson    from './components/FlashcardLesson.jsx';
 import QuizLesson         from './components/QuizLesson.jsx';
 import AudioDrillLesson   from './components/AudioDrillLesson.jsx';
+import AudioSequenceLesson from './components/AudioSequenceLesson.jsx';
 import OrderedQALesson    from './components/OrderedQALesson.jsx';
 import RecitationLesson   from './components/RecitationLesson.jsx';
 import RitualLesson       from './components/RitualLesson.jsx';
@@ -265,6 +266,7 @@ export default function App() {
       <div className="lesson-body">
         {module?.type === 'flash'     && <FlashcardLesson    cards={module.data}         onComplete={handleComplete} addXP={addXP} />}
         {module?.type === 'audio'     && <AudioDrillLesson   items={module.data}         onComplete={handleComplete} addXP={addXP} />}
+        {module?.type === 'audiosequence' && <AudioSequenceLesson items={module.data}   onComplete={handleComplete} />}
         {module?.type === 'orderedqa' && <OrderedQALesson    items={module.data}         onComplete={handleComplete} title={module.title} />}
         {module?.type === 'quiz'      && <QuizLesson         questions={module.quizData} onComplete={handleComplete} addXP={addXP} loseHeart={loseHeart} label={module.label} questionCount={module.questionCount} />}
         {module?.type === 'recitation'&& <RecitationLesson   items={module.data}         onComplete={handleComplete} addXP={addXP} />}
