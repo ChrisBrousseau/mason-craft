@@ -361,6 +361,18 @@ body {
 .fc-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 700; }
 .fc-text  { font-size: 17px; line-height: 1.7; color: var(--text); }
 .fc-sub   { font-size: 13px; color: var(--text-muted); margin-top: 14px; font-style: italic; }
+.audio-control-row { display: flex; gap: 12px; margin-top: 10px; margin-bottom: 10px; }
+.audio-btn { width: 100%; }
+.audio-note {
+  background: rgba(201,168,76,.06);
+  border: 1px solid rgba(201,168,76,.18);
+  border-radius: 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
 
 .btn-pair { display: flex; gap: 12px; }
 .btn-still-learning {
@@ -579,6 +591,7 @@ body {
   .home-title { font-size: 18px; }
   .btn-pair   { flex-direction: column; }
   .btn-pair .btn-quiz-lines, .btn-pair .btn-gold { flex: unset; width: 100%; }
+  .audio-control-row { flex-direction: column; }
 }
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .home-content { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }

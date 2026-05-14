@@ -38,6 +38,7 @@ export const MM_MODULES = [
   { id:'mm-quiz', icon:'🧠', degree:'mm', title:'MM Knowledge Quiz', sub:'Multiple-choice recall across all Third Degree prompts', type:'quiz', xp:100, quizData:buildQuiz(MM_QUESTIONS), label:'Master Mason Questions', questionCount:MM_QUESTIONS.length },
   { id:'mm-terms', icon:'🔤', degree:'mm', title:'MM Terms & Meanings', sub:'Quiz yourself on masked words, abbreviations, and their meanings', type:'quiz', xp:90, quizData:buildQuiz(MM_TERMS_QA), label:'Master Mason Terms', questionCount:MM_TERMS_QA.length },
   { id:'mm-fillblank', icon:'✏️', degree:'mm', title:'Fill the Blanks — MM', sub:'Practice the key missing words from the Third Degree prompts', type:'fillblank', xp:110, data:MM_FILL_BLANK },
+  { id:'mm-audio', icon:'🔊', degree:'mm', title:'MM Audio Drill', sub:'Hear only the questions, answer aloud, then reveal the answer to check yourself', type:'audio', xp:110, data:MM_QUESTIONS },
   { id:'mm-recitation', icon:'🗣️', degree:'mm', title:'MM Verbal Test', sub:'No hints: answer from memory, then reveal and self-grade', type:'recitation', xp:120, data:MM_QUESTIONS },
 ];
 
