@@ -33,7 +33,7 @@ export const MM_QUESTIONS = [
   },
   {
     q: 'On your admission into the lodge, did you observe anything different from its usual appearance?',
-    a: 'I did, all was in darkness, save a great light in the East.',
+    a: 'I did - all was in darkness, save a great light in the East.',
   },
   {
     q: 'To what does that darkness allude?',
@@ -60,7 +60,7 @@ export const MM_QUESTIONS = [
     a: 'On the five points of fellowship.',
   },
   {
-    q: "What symbol marks the resting place of the dead in a Master Mason's lodge?",
+    q: "What symbol marks the resting place of the dead in a Master Mason's Lodge?",
     a: 'A sprig of Acacia.',
   },
   {
