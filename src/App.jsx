@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 
 import { ls_get, ls_set } from './utils.js';
-import { EA_MODULES, FC_MODULES, MM_MODULES, ALL_MODULES } from './data/modules.js';
+import { EA_MODULES, FC_MODULES, PR_MODULES, MM_MODULES, ALL_MODULES } from './data/modules.js';
 
 import MasonicEmblem      from './components/MasonicEmblem.jsx';
 import AllSeeingEye       from './components/AllSeeingEye.jsx';
@@ -83,6 +83,7 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
   const pct    = Math.round((completed.length / ALL_MODULES.length) * 100);
   const eaDone = EA_MODULES.filter(m => completed.includes(m.id)).length;
   const fcDone = FC_MODULES.filter(m => completed.includes(m.id)).length;
+  const prDone = PR_MODULES.filter(m => completed.includes(m.id)).length;
   const mmDone = MM_MODULES.filter(m => completed.includes(m.id)).length;
 
   return (
@@ -164,6 +165,19 @@ function HomeScreen({ xp, streak, completed, onOpen }) {
         </DegreeSection>
 
         <DegreeSection
+          label="Third Degree Prep · Questions Prior to Raising"
+          color="#5f7aa2"
+          progress={`${prDone} of ${PR_MODULES.length} complete`}
+        >
+          <div className="module-grid">
+            {PR_MODULES.map(mod => (
+              <ModuleCard key={mod.id} mod={mod} done={completed.includes(mod.id)}
+                onClick={() => onOpen(mod)} accentColor="#5f7aa2" />
+            ))}
+          </div>
+        </DegreeSection>
+
+        <DegreeSection
           label="Third Degree · Master Mason"
           color="#6a86c8"
           progress={`${mmDone} of ${MM_MODULES.length} complete`}
@@ -196,7 +210,9 @@ function LessonHeader({ module, accent }) {
     ? 'First Degree · Entered Apprentice'
     : module.degree === 'fc'
       ? 'Second Degree · Fellow Craft'
-      : 'Third Degree · Master Mason';
+      : module.degree === 'pr'
+        ? 'Third Degree Prep · Prior to Raising'
+        : 'Third Degree · Master Mason';
   return (
     <div className="lesson-header">
       <div className="lesson-icon">{module.icon}</div>
@@ -246,7 +262,9 @@ export default function App() {
     ? '#c87533'
     : module?.degree === 'fc'
       ? '#c9a84c'
-      : '#6a86c8';
+      : module?.degree === 'pr'
+        ? '#5f7aa2'
+        : '#6a86c8';
 
   if (screen === 'result' && result) {
     return (

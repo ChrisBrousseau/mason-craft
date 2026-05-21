@@ -9,6 +9,7 @@ import {
   FC_FACTS_QA, FILL_BLANK_FC, FC_OBLIGATION_CARDS, FC_TOOLS_QUIZ,
   EA_TOOLS_QUIZ,
 } from './fc-data.js';
+import { PR_QUESTIONS, PR_TERMS_QA, PR_FILL_BLANK } from './pr-data.js';
 import { MM_QUESTIONS, MM_TERMS_QA, MM_FILL_BLANK } from './mm-data.js';
 
 export const EA_MODULES = [
@@ -32,6 +33,17 @@ export const FC_MODULES = [
   { id:'fc-fillblank', icon:'✏️', degree:'fc', title:'Fill the Blanks — FC',          sub:'Decode every abbreviation of the Second Degree',      type:'fillblank',xp:70,  data:FILL_BLANK_FC },
 ];
 
+export const PR_MODULES = [
+  { id:'pr-questions', icon:'🪜', degree:'pr', title:'Prior to Raising Questions', sub:'Study the questions and answers before the Third Degree', type:'flash', xp:90, data:PR_QUESTIONS },
+  { id:'pr-sequence', icon:'📜', degree:'pr', title:'Prior to Raising Sequence', sub:'Read the full prior-to-raising sequence in order', type:'orderedqa', xp:80, data:PR_QUESTIONS },
+  { id:'pr-quiz', icon:'🧠', degree:'pr', title:'Prior to Raising Quiz', sub:'Multiple-choice recall across the prior-to-raising prompts', type:'quiz', xp:100, quizData:buildQuiz(PR_QUESTIONS), label:'Prior to Raising', questionCount:PR_QUESTIONS.length },
+  { id:'pr-terms', icon:'🔤', degree:'pr', title:'Prior to Raising Terms', sub:'Quiz key names, pillars, meanings, and pass-word details', type:'quiz', xp:90, quizData:buildQuiz(PR_TERMS_QA), label:'Prior to Raising Terms', questionCount:PR_TERMS_QA.length },
+  { id:'pr-fillblank', icon:'✏️', degree:'pr', title:'Fill the Blanks — Prior to Raising', sub:'Practice the key missing words from the prior-to-raising section', type:'fillblank', xp:110, data:PR_FILL_BLANK },
+  { id:'pr-audio', icon:'🔊', degree:'pr', title:'Prior to Raising Audio Drill', sub:'Hear only the questions, answer aloud, then reveal the answer', type:'audio', xp:110, data:PR_QUESTIONS },
+  { id:'pr-audio-sequence', icon:'🎧', degree:'pr', title:'Prior to Raising Full Audio', sub:'Listen to the whole question-and-answer sequence with pauses and repeat', type:'audiosequence', xp:90, data:PR_QUESTIONS },
+  { id:'pr-recitation', icon:'🗣️', degree:'pr', title:'Prior to Raising Verbal Test', sub:'No hints: answer from memory, then reveal and self-grade', type:'recitation', xp:120, data:PR_QUESTIONS },
+];
+
 export const MM_MODULES = [
   { id:'mm-questions', icon:'🎓', degree:'mm', title:'MM Questions', sub:'Study the Third Degree questions and answers as flashcards', type:'flash', xp:90, data:MM_QUESTIONS },
   { id:'mm-sequence', icon:'📜', degree:'mm', title:'MM Full Sequence', sub:'Read the full Third Degree questions and answers in exact order', type:'orderedqa', xp:80, data:MM_QUESTIONS },
@@ -43,4 +55,4 @@ export const MM_MODULES = [
   { id:'mm-recitation', icon:'🗣️', degree:'mm', title:'MM Verbal Test', sub:'No hints: answer from memory, then reveal and self-grade', type:'recitation', xp:120, data:MM_QUESTIONS },
 ];
 
-export const ALL_MODULES = [...EA_MODULES, ...FC_MODULES, ...MM_MODULES];
+export const ALL_MODULES = [...EA_MODULES, ...FC_MODULES, ...PR_MODULES, ...MM_MODULES];
